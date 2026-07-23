@@ -1,0 +1,49 @@
+name: Build APK
+
+# Build otomatis setiap push ke branch main, atau dipicu manual lewat tab "Actions" di GitHub.
+# Tidak butuh Android Studio / NDK / SDK terpasang di komputer kamu — semua dibangun di server GitHub.
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout kode
+        uses: actions/checkout@v4
+
+      - name: Clone llama.cpp (modul native :llama, dipatok ke tag stabil)
+        run: |
+          git clone --depth 1 --branch b10076 https://github.com/ggml-org/llama.cpp.git external/llama.cpp
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup NDK (dibutuhkan modul native :llama)
+        uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r27c
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.13"
+
+      - name: Build APK (debug)
+        run: gradle assembleDebug --stacktrace
+
+      - name: Upload APK sebagai artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nara-assistant-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 14
