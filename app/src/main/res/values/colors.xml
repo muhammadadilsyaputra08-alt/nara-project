@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nara_bg">#1B1D2A</color>
+    <color name="nara_surface">#262A3E</color>
+    <color name="nara_accent">#6C8CFF</color>
+    <color name="nara_text_primary">#F5F6FA</color>
+    <color name="nara_text_secondary">#A2A6BF</color>
+    <color name="nara_status_online">#4CD964</color>
+    <color name="nara_status_offline">#FF6B6B</color>
+    <color name="nara_status_local">#FFC24C</color>
+</resources>

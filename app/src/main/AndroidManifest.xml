@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <application
+        android:name=".NaraApplication"
+        android:allowBackup="true"
+        android:extractNativeLibs="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Nara">
+
+        <!-- Widget -->
+        <receiver
+            android:name=".ui.widget.AssistantWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.axel.nara.ACTION_MIC_TAP" />
+                <action android:name="com.axel.nara.ACTION_SETTINGS_TAP" />
+                <action android:name="com.axel.nara.ACTION_TOGGLE_MODE" />
+                <action android:name="com.axel.nara.ACTION_RETRY" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/assistant_widget_info" />
+        </receiver>
+
+        <!-- Foreground service orkestrasi STT -> model -> router -> TTS -->
+        <service
+            android:name=".service.AssistantService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <activity
+            android:name=".ui.activity.SettingsActivity"
+            android:exported="true"
+            android:label="@string/settings_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Dibuka dari widget saat area "ketik" ditekan (lihat AssistantWidgetRemoteViews).
+             exported=false: hanya dipanggil dari dalam app sendiri (widget), bukan entry point publik. -->
+        <activity
+            android:name=".ui.activity.QuickInputActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Nara.QuickInput"
+            android:excludeFromRecents="true"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+
+    </application>
+
+</manifest>

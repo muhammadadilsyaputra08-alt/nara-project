@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nara</string>
+    <string name="settings_title">Pengaturan Nara</string>
+    <string name="widget_description">Widget asisten suara Nara</string>
+
+    <string name="status_idle">Siap</string>
+    <string name="status_listening">Mendengarkan</string>
+    <string name="status_processing">Memproses</string>
+    <string name="status_executing">Menjalankan</string>
+    <string name="status_speaking">Menjawab</string>
+    <string name="status_error">Terjadi kendala</string>
+    <string name="status_fallback">Butuh klarifikasi</string>
+
+    <string name="greeting_pagi">Selamat pagi, tuan. Nara siap melayani. Ada yang bisa ku bantu?</string>
+    <string name="greeting_siang">Selamat siang, tuan. Nara siap melayani. Ada yang bisa ku bantu?</string>
+    <string name="greeting_sore">Selamat sore, tuan. Nara siap melayani. Ada yang bisa ku bantu?</string>
+    <string name="greeting_malam">Selamat malam, tuan. Nara siap melayani. Ada yang bisa ku bantu?</string>
+
+    <string name="transition_deep_search">Tunggu sebentar, tuan. Aku cari dulu.</string>
+    <string name="fallback_no_internet">Perintah ini butuh internet, tuan.</string>
+    <string name="fallback_clarify">Maaf, tuan, aku belum paham maksudnya. Bisa diulang?</string>
+
+    <string name="action_mic">Bicara ke Nara</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="action_retry">Coba lagi</string>
+
+    <string name="widget_hint_placeholder">Ketik atau ucapkan sesuatu ke Nara…</string>
+    <string name="quick_input_hint">Ketik perintah untuk Nara…</string>
+    <string name="action_send">Kirim ke Nara</string>
+</resources>

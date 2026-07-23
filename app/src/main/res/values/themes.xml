@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Nara" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/nara_accent</item>
+        <item name="android:colorBackground">@color/nara_bg</item>
+        <item name="colorSurface">@color/nara_surface</item>
+        <item name="android:textColorPrimary">@color/nara_text_primary</item>
+        <item name="android:textColorSecondary">@color/nara_text_secondary</item>
+    </style>
+
+    <!-- Tema mengambang untuk QuickInputActivity: dibuka dari widget saat area "ketik" ditekan,
+         tampil sebagai bar input kecil di atas homescreen (bukan full-screen activity), lalu
+         menutup diri sendiri setelah submit — meniru interaksi search bar Google saat diketuk. -->
+    <style name="Theme.Nara.QuickInput" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorSurface">@color/nara_surface</item>
+        <item name="android:textColorPrimary">@color/nara_text_primary</item>
+    </style>
+</resources>
